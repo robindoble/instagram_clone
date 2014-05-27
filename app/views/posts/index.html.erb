@@ -2,7 +2,9 @@
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
 	<%= post.caption %>
+	<%= image_tag post.picture.url(:medium), class: 'uploaded_pic' %>
 	<%= post.user.username %>
+
 	<% end %>
 <% else %>
 	<h3> No posts yet</h3>
