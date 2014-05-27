@@ -33,6 +33,15 @@ describe 'posts' do
 			expect(page).to have_content('This is an amazing photo')
 		end
 
+		it 'posts should display the username' do  
+			visit '/posts'
+			click_on 'Create Post' 
+			expect(current_path).to eq('/posts/new')
+			fill_in 'Caption',with: 'This is an amazing photo'
+			click_on 'Create Post'
+			expect(page).to have_content('This is an amazing photo')
+		end
+
 	end
 
 end
