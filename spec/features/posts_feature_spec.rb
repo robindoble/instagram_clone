@@ -58,9 +58,9 @@ describe 'posts' do
 		context 'adding pictures to each post' do 
 
 			it 'posts pictures should be displayed' do 
-				visit 'posts/new'
+				visit '/posts/new'
 				fill_in 'Caption',with: 'This is an amazing photo'
-				attach_file 'Picture', Rails.root.join('spec/images/spock_cartoon.png')
+				attach_file 'Picture', Rails.root.join('spec/images/image.jpeg')
 				click_on 'Create Post'
 				expect(current_path).to eq posts_path
 				expect(page).to have_content 'This is an amazing photo'
@@ -71,5 +71,31 @@ describe 'posts' do
 
 	end
 end
+
+
+describe 'adding likes to pictures' do 
+
+	before do 
+		user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+		login_as user
+		user.posts.create(:caption => 'This is a post test')
+	end
+
+	it 'users can like photos and the likes should be shown' do 
+		visit '/posts'
+		click_on 'Like'
+		expect(page).to have_content 'robindoble likes'
+	end
+
+
+
+end
+
+
+
+
+
+
+
 
 

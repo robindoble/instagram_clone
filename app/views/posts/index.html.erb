@@ -2,8 +2,9 @@
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
 	<%= post.caption %>
-	<%= image_tag post.picture.url(:medium), class: 'uploaded_pic' %>
 	<%= post.user.username %>
+	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %>
+	<%= link_to 'Like', new_post_like_path(post) %>
 
 	<% end %>
 <% else %>
