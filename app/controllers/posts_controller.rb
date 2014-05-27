@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   
+  before_action :authenticate_user!
+
   def index
   	@posts = Post.all
   end
@@ -11,7 +13,7 @@ class PostsController < ApplicationController
   def create
   	# raise 'hello'
   	@post = Post.create(params[:post].permit(:caption))
-  	redirect_to('/posts/index')
+  	redirect_to('/posts')
   end
 
 
