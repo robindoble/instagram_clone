@@ -9,7 +9,8 @@ def create
 end
 
 def destroy
-	Post.find(params[:post_id]).likes.where(:user => current_user).first.destroy
+	@like = Post.find(params[:post_id]).likes.where(:user => current_user)
+	@like.first.destroy if @like.any?
 	redirect_to '/posts'
 end
 

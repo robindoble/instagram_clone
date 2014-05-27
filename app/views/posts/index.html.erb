@@ -1,14 +1,14 @@
 
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
-	<%= post.caption %>
-	<%= post.user.username %>
+	<h3><%= post.caption %>
+	, by: <%= post.user.username %></h3>
 
 		<% post.likes.each do |like| %>
 		<%= like.user.username %> likes 
-		<% end %>
+		<% end %><br />
 
-	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %>
+	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
 	<%= link_to 'Like', like_path(post), :method => :post %>
 	<%= link_to 'Unlike', dislike_path(post), :method => :post %>
 

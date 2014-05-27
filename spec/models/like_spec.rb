@@ -10,7 +10,7 @@ describe Like do
 
 	context 'adding like' do 
 
-	  it 'a user can only like a post once' do 
+	  it 'a user can only like any individual post once' do 
 	  	like = @post1.likes.create
 	  	like.user = @user
 	  	expect(like.save).to eq(true)
@@ -30,7 +30,6 @@ describe Like do
 
 	end
 
-
 	context 'deleting likes' do 
 
 		it 'a user can unlike their like for any given post' do 
@@ -42,17 +41,7 @@ describe Like do
 	  	expect(Like.all.count).to eq(0)
 		end
 
-		# it 'a user can unlike their like for any given post' do 
-		# 	like = @post1.likes.create
-	 #  	like.user = @user
-	 #  	like.save
-	 #  	expect(Like.all.count).to eq(1)
-	 #  	like.destroy
-	 #  	expect(Like.all.count).to eq(0)
-		# end
-
 	end
-
 
 end
 
