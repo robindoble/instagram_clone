@@ -10,7 +10,7 @@
 
 	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %>
 	<%= link_to 'Like', like_path(post), :method => :post %>
-	<%= link_to 'Unike', dislike_path(post), :method => :post %>
+	<%= link_to 'Unlike', dislike_path(post), :method => :post %>
 
 	<% end %>
 <% else %>

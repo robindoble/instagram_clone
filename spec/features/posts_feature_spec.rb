@@ -94,6 +94,15 @@ describe 'adding likes to pictures' do
 	end
 
 
+	it 'users can unlike posts as well' do 
+		login_as @user2
+		visit '/posts'
+		click_on 'Like'
+		expect(page).to have_content 'hankmoody likes'
+		click_on 'Unlike'
+		expect(page).not_to have_content 'hankmoody likes'
+	end
+
 
 end
 

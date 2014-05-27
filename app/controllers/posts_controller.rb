@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     # current_user = User.find(session[:user_id]
     # puts current_user
     # raise 'hello'
-  	@post = Post.new(params[:post].permit(:caption,:picture))
+  	@post = Post.new(params[:post].permit(:caption, :picture))
     @post.user = current_user
     @post.save
     redirect_to('/posts')
