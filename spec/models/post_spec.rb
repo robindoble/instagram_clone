@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Post do
+describe 'posts and usernames' do
 
 	before do 
 		@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
@@ -14,6 +14,24 @@ describe Post do
   end
 
 
+end
+
+
+describe 'posts and likes' do
+
+	before do 
+		@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+		@post = @user.posts.create(:caption => 'This is a post test')
+	end
+
+  it 'a user can only like a post once' do 
+  	like = @post.likes.create
+  	like.user = @user
+  	expect(like.save).to eq(true)
+  	like = @post.likes.create
+  	like.user = @user
+  	expect(like.save).to eq(false)
+  end
 
 
 end
