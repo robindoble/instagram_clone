@@ -3,8 +3,14 @@
 	<% @posts.each do |post| %>
 	<%= post.caption %>
 	<%= post.user.username %>
+
+		<% post.likes.each do |like| %>
+		<%= like.user.username %> likes 
+		<% end %>
+
 	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %>
-	<%= link_to 'Like', new_post_like_path(post) %>
+	<%= link_to 'Like', like_path(post), :method => :post %>
+	<%= link_to 'Unike', dislike_path(post), :method => :post %>
 
 	<% end %>
 <% else %>

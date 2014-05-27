@@ -76,15 +76,21 @@ end
 describe 'adding likes to pictures' do 
 
 	before do 
-		user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
-		login_as user
-		user.posts.create(:caption => 'This is a post test')
+		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+		@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
+		@user1.posts.create(:caption => 'This is a post test')
 	end
 
 	it 'users can like photos and the likes should be shown' do 
+		login_as @user1
+		visit '/posts'
+		click_on 'Like'
+		logout
+		login_as @user2
 		visit '/posts'
 		click_on 'Like'
 		expect(page).to have_content 'robindoble likes'
+		expect(page).to have_content 'hankmoody likes'
 	end
 
 
