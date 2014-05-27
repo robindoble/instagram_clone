@@ -7,6 +7,16 @@ describe 'posts' do
 		expect(page).to have_content('No posts yet')
 	end
 
+	it 'you can add posts' do  
+		visit '/posts'
+		click_on 'Create Post' 
+		expect(current_path).to eq('/posts/new')
+		fill_in 'Caption',with: 'This is an amazing photo'
+		click_on 'Create Post'
+		expect(page).to have_content('This is an amazing photo')
+	end
+
+
 
 
 
