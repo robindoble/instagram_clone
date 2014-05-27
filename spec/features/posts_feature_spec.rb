@@ -33,15 +33,27 @@ describe 'posts' do
 			expect(page).to have_content('This is an amazing photo')
 		end
 
+	end
+
+	context 'posts showing a username' do 
+
+		before do 
+			user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+			login_as user
+			post = Post.new(:caption => 'This is a post test')
+			post.user = user
+			post.save
+		end
+
 		it 'posts should display the username' do  
 			visit '/posts'
-			click_on 'Create Post' 
-			expect(current_path).to eq('/posts/new')
-			fill_in 'Caption',with: 'This is an amazing photo'
-			click_on 'Create Post'
-			expect(page).to have_content('This is an amazing photo')
+			expect(current_path).to eq('/posts')
+			expect(page).to have_content('This is a post test')
+			expect(page).to have_content('robindoble')
 		end
 
 	end
 
 end
+
+

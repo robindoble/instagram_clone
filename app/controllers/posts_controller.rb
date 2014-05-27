@@ -11,9 +11,13 @@ class PostsController < ApplicationController
   end
 
   def create
-  	# raise 'hello'
-  	@post = Post.create(params[:post].permit(:caption))
-  	redirect_to('/posts')
+    # current_user = User.find(session[:user_id]
+    # puts current_user
+    # raise 'hello'
+  	@post = Post.new(params[:post].permit(:caption))
+    @post.user = current_user
+    @post.save
+    redirect_to('/posts')
   end
 
 
