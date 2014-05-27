@@ -15,7 +15,7 @@ describe 'posts' do
 	context 'when logged in' do 
 
 		before do 
-			user = User.create(:email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+			user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
 			login_as user
 		end
 
@@ -34,8 +34,5 @@ describe 'posts' do
 		end
 
 	end
-
-
-
 
 end
