@@ -14,7 +14,7 @@
 
 	<% post.comments.each do |comment| %>
 		<%= comment.user.username %> commented: 
-		<%= comment.comment %>
+		<%= comment.comment %><br />
 	<% end %><br />
 
 	<%= form_for [post,@comment] do |f| %>
