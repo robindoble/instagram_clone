@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   # get 'posts/index'
   root to: 'posts#index'
   
-  resources :posts 
+  resources :posts do 
+    resources :comments, only: [:create, :destroy]
+  end
+
   resources :profiles, only: [:show]
+
+  # post 'posts/:post_id/like', to: 'likes#create' , as: 'like'
+  # post 'posts/:post_id/unlike', to: 'likes#destroy', as: 'dislike'
 
   post 'posts/:post_id/like', to: 'likes#create' , as: 'like'
   post 'posts/:post_id/unlike', to: 'likes#destroy', as: 'dislike'

@@ -4,13 +4,24 @@
 	<h3><%= post.caption %>
 	, by: <%= post.user.username %></h3>
 
-		<% post.likes.each do |like| %>
-		<%= like.user.username %> likes 
-		<% end %><br />
-
 	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
 	<%= link_to 'Like', like_path(post), :method => :post %>
 	<%= link_to 'Unlike', dislike_path(post), :method => :post %>
+
+	<% post.likes.each do |like| %>
+		<%= like.user.username %> likes 
+	<% end %><br />
+
+	<% post.comments.each do |comment| %>
+		<%= comment.user.username %> commented: 
+		<%= comment.comment %>
+	<% end %><br />
+
+	<%= form_for [post,@comment] do |f| %>
+	<%= f.label :comment %>
+	<%= f.text_area :comment %>
+	<%= f.submit 'Create comment' %>
+	<% end %>		
 
 	<% end %>
 <% else %>
