@@ -17,8 +17,6 @@ describe User do
 			like = @post.likes.new
 	  	like.user = @user2
 	  	like.save
-	  	# puts @post.likes.where(:user => @user2).first.
-	  	# puts @user2.likes.count
 	  	expect(@user2.likes.count).to eq(1)
 	  	expect(@post.likes.where(:user => @user2).count).to eq(1)
 	  	@user2.destroy 

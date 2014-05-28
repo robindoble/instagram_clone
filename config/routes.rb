@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   
   resources :posts 
+  resources :profiles, only: [:show]
 
   post 'posts/:post_id/like', to: 'likes#create' , as: 'like'
   post 'posts/:post_id/unlike', to: 'likes#destroy', as: 'dislike'
+
+  # get '/profile/:id' => 'users#show', as: 'profile'
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
