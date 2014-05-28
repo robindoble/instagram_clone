@@ -1,5 +1,9 @@
 
-<% if @posts.any? %>
+
+
+
+
+  <% if @posts.any? %>
 	<% @posts.each do |post| %>
 	<h3><%= post.caption %>
 	, by: <%= post.user.username %></h3>
@@ -30,3 +34,4 @@
 <br />
 <%# button_to 'Create Post', new_post_path, method: :get %>
 <%= link_to 'Create Post', new_post_path %>
+
