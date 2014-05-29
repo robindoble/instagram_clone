@@ -1,19 +1,19 @@
 require 'spec_helper'
 
-describe 'comments FEATURE' do 
 
+describe 'leaving tags on posts' do 
 
 	before do 
 		@user = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
 		@user.posts.create(:caption => 'This is a post test')
 	end
 
-	it 'users can leave a comment on a post' do 
+
+	it 'should show tags in captions or comments as tag links' do 
 		login_as @user
-		visit '/posts'
-		fill_in 'Comments...', with: 'Hank, your picture is amazing'
-		click_on 'Create comment'
-		expect(page).to have_content 'Hank, your picture is amazing'
+		visit '/posts/new'
+		fill_in 'Caption',with: 'Hank Moody is number one'
+		
 	end
 
 

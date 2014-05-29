@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Post do
+describe 'Post MODEL' do
 
 	before do 
 		@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')

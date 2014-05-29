@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'posts' do 
+describe 'Post FEATURES' do 
 
 	context 'while not logged in' do
 
@@ -19,25 +19,26 @@ describe 'posts' do
 			login_as @user
 		end
 
-		context 'without users' do 
+		context 'without any posts' do 
 
 			it 'should have no posts to begin with' do  
 				visit '/posts'
 				expect(page).to have_content('No posts yet')
 			end
 
-			it 'you can add posts' do  
+			it 'users can add posts' do  
 				visit '/posts'
-				click_on 'Create Post' 
+				click_link 'Create Post' 
 				expect(current_path).to eq('/posts/new')
 				fill_in 'Caption',with: 'This is an amazing photo'
-				click_on 'Create Post'
+				click_button 'Create Post'
+				save_and_open_page
 				expect(page).to have_content('This is an amazing photo')
 			end
 	
 		end
 
-		context 'posts showing a username' do 
+		context 'posts show the username' do 
 
 			before do
 				post = Post.new(:caption => 'This is a post test'	)
@@ -45,7 +46,7 @@ describe 'posts' do
 				post.save
 			end
 
-			it 'posts should display the username' do  
+			it 'of the post' do  
 				visit '/posts'
 				expect(current_path).to eq('/posts')
 				expect(page).to have_content('This is a post test')
@@ -57,12 +58,12 @@ describe 'posts' do
 
 		context 'adding pictures to each post' do 
 
-			it 'posts pictures should be displayed' do 
+			it 'and the picture should be displayed' do 
 				visit '/posts/new'
 				fill_in 'Caption',with: 'This is an amazing photo'
 				attach_file 'Picture', Rails.root.join('spec/images/image.jpeg')
-				click_on 'Create Post'
-				expect(current_path).to eq posts_path
+				click_button 'Create Post'
+				# expect(current_path).to eq new_posts_path
 				expect(page).to have_content 'This is an amazing photo'
 				expect(page).to have_css 'img.uploaded_pic'
 			end
@@ -73,7 +74,7 @@ describe 'posts' do
 end
 
 
-describe 'adding likes to pictures' do 
+describe 'POST Features adding likes to pictures' do 
 
 	before do 
 		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
@@ -89,8 +90,8 @@ describe 'adding likes to pictures' do
 		login_as @user2
 		visit '/posts'
 		click_on 'Like'
-		expect(page).to have_content 'robindoble likes'
-		expect(page).to have_content 'hankmoody likes'
+		expect(page).to have_content 'robindoble'
+		expect(page).to have_content 'hankmoody'
 	end
 
 
@@ -98,9 +99,9 @@ describe 'adding likes to pictures' do
 		login_as @user2
 		visit '/posts'
 		click_on 'Like'
-		expect(page).to have_content 'hankmoody likes'
+		expect(page).to have_content 'hankmoody'
 		click_on 'Unlike'
-		expect(page).not_to have_content 'hankmoody likes'
+		expect(page).not_to have_content 'hankmoody'
 	end
 
 

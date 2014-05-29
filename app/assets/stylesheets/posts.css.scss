@@ -5,18 +5,15 @@
 
 
 .container-fluid{
-	height: 100%;	
-	margin-top: 10px;
+	/*height: 100%;	*/
+	/*margin-top: 10px;*/
 	background: rgba(230,230,230,.8);
 }
 
-/*.row{
-	height: 100%;
-}*/
+
 
 .inner_contianer {
-	height: 100%;
-	/*background: black;*/
+	/*height: 100%;*/
 }
 
 .posts_outer {
@@ -25,14 +22,12 @@
 	border-right-style: solid;
 	border-width: 2px;
 	border-color: rgb(190,190,190);
-	margin: 15px 20px;
+	margin: 0px 20px;
 }
 
 
 .posts_inner {
-	/*background: black; */
 	margin: 0px 30px;
-	/*margin-top: 15px;*/
 
 	.uploaded_pic {
 		width: 100%;
