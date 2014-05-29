@@ -14,10 +14,12 @@ class PostsController < ApplicationController
   def create
     # current_user = User.find(session[:user_id]
     # puts current_user
-    # raise 'hello'
-  	@post = Post.new(params[:post].permit(:caption, :picture))
+    raise 'hello'
+  	@post = Post.new(params[:post].permit(:picture))
     @post.user = current_user
     @post.save
+    @comment = @post.comments.create(text: params[:post])
+
     redirect_to('/posts')
   end
 

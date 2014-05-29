@@ -32,7 +32,7 @@ describe 'Post FEATURES' do
 				expect(current_path).to eq('/posts/new')
 				fill_in 'Caption',with: 'This is an amazing photo'
 				click_button 'Create Post'
-				save_and_open_page
+				# save_and_open_page
 				expect(page).to have_content('This is an amazing photo')
 			end
 	

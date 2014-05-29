@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe 'leaving tags on posts' do 
+describe 'tags FEATURES' do 
 
 	before do 
 		@user = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
@@ -12,8 +12,8 @@ describe 'leaving tags on posts' do
 	it 'should show tags in captions or comments as tag links' do 
 		login_as @user
 		visit '/posts/new'
-		fill_in 'Caption',with: 'Hank Moody is number one'
-		
+		fill_in 'Caption',with: 'Hank Moody is number one, #one'
+		expect(page).to have_link '#one'
 	end
 
 

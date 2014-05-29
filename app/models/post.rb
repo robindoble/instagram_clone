@@ -17,4 +17,11 @@ class Post < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+
+  def output_comment_with_tag_links
+  	string = self.caption
+  end
+
+
+
 end
