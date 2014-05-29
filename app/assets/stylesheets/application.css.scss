@@ -16,12 +16,23 @@
 
 @import "bootstrap";
 
+html,body {
+	height: 100%;
+}
+
 .jumbotron {
 	background-image: image-url('image.jpg');
+	height: 350px;
+	width: auto;
 
-	.outer-container{
+	.outer_container{
 		margin: 20px 80px;
 		background-color: rgba(255,255,255,.85)		
 	}
+	
+}
 
+
+.navbar-header {
+	display: inline;
 }

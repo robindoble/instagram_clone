@@ -1,37 +1,58 @@
 
 
 
+<div class='container-fluid'>
+	<!-- <div class='row'> -->
+	  <div class='inner_container col-md-6 col-md-offset-3'>
+	  	<div class='posts_outer'>
+		  	<div class='posts_inner'>
+						  
+						  <% if @posts.any? %>
+							<% @posts.each do |post| %>
+							<h3><%= post.caption %>
+							, by: <%= post.user.username %></h3>
+
+							<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
+
+							<span class="glyphicon glyphicon-heart"></span><% post.likes.each do |like| %>
+									<% if post.likes.count <= 1 %> 	
+										<%= like.user.username %> 
+									<% else %> 	
+										, <%= like.user.username %> 
+									<% end %> 	
+							<% end %><br />
 
 
-  <% if @posts.any? %>
-	<% @posts.each do |post| %>
-	<h3><%= post.caption %>
-	, by: <%= post.user.username %></h3>
+							<%= link_to 'Like', like_path(post), :method => :post %>
+							<%= link_to 'Unlike', dislike_path(post), :method => :post %>
 
-	<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
-	<%= link_to 'Like', like_path(post), :method => :post %>
-	<%= link_to 'Unlike', dislike_path(post), :method => :post %>
+							<div class='comments'>
+								<% post.comments.each do |comment| %>
+									<div class='individual_comments'>
+										<%= comment.user.username %> commented: 
+										<%= comment.comment %><br />
+									</div>	
+								<% end %><br />
+							</div>
 
-	<% post.likes.each do |like| %>
-		<%= like.user.username %> likes 
-	<% end %><br />
+							<div class='comment_form'>
+								<%= form_for [post,@comment] do |f| %>
+								
+								<%= f.text_area :comment, class: 'text_area' %>
+								<%= f.submit 'Create comment', class: "btn btn-primary" %>
+								<% end %>		
+							</div>
 
-	<% post.comments.each do |comment| %>
-		<%= comment.user.username %> commented: 
-		<%= comment.comment %><br />
-	<% end %><br />
+							<% end %>
+						<% else %>
+							<h3> No posts yet</h3>
+						<% end %>
+						<br />
 
-	<%= form_for [post,@comment] do |f| %>
-	<%= f.label :comment %>
-	<%= f.text_area :comment %>
-	<%= f.submit 'Create comment' %>
-	<% end %>		
 
-	<% end %>
-<% else %>
-	<h3> No posts yet</h3>
-<% end %>
-<br />
-<%# button_to 'Create Post', new_post_path, method: :get %>
-<%= link_to 'Create Post', new_post_path %>
 
+			</div>
+		</div>
+	</div>
+	<!-- </div> -->
+</div>	

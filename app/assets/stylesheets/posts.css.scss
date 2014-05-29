@@ -1,3 +1,96 @@
-// Place all the styles related to the posts controller here.
+/*// Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+
+
+.container-fluid{
+	height: 100%;	
+	margin-top: 10px;
+	background: rgba(230,230,230,.8);
+}
+
+/*.row{
+	height: 100%;
+}*/
+
+.inner_contianer {
+	height: 100%;
+	/*background: black;*/
+}
+
+.posts_outer {
+	background: rgba(217,217,217,.5);
+	border-left-style: solid;
+	border-right-style: solid;
+	border-width: 2px;
+	border-color: rgb(190,190,190);
+	margin: 15px 20px;
+}
+
+
+.posts_inner {
+	/*background: black; */
+	margin: 0px 30px;
+	/*margin-top: 15px;*/
+
+	.uploaded_pic {
+		width: 100%;
+		border-width: 1px;
+		border-style: solid;
+		border-color: rgb(30,30,30);
+	}
+
+	h3{
+		padding: 10px;
+		margin: 0px;
+		color: rgb(25,65,100);
+	}
+
+	.comments{
+		width: 100%;
+		margin: 10px 0px;
+	}
+
+	.individual_comments{
+		width: 100%;
+		padding: 0px 0px;
+	}
+
+	.comment_form{
+		width: 100%;
+
+		.text_area{
+			width: 100%;
+		}
+	}
+
+}
+
+
+/*.col-md- {
+	height: 100%;
+	max-width: 800px;
+	margin: 10px auto;
+	border: black;
+	border-style: solid;
+	background: black;
+	padding: 10px 14px 15px;
+
+}
+*/
+
+/*.main_page_inner{
+	height: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+	border: black;
+	border-style: solid;
+	background: black;
+	padding: 10px 14px 15px;
+	
+}
+*/
+
+
+
