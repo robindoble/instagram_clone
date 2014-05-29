@@ -4,8 +4,8 @@ describe 'Like MODEL' do
 
 	before do 
 		@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
-		@post1 = @user.posts.create(:caption => 'This is a post test')
-		@post2 = @user.posts.create(:caption => 'This is a post test')
+		@post1 = @user.posts.create
+		@post2 = @user.posts.create
 	end
 
 	context 'adding like' do 

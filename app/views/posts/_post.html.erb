@@ -1,0 +1,45 @@
+<div class='container-fluid'>
+	<!-- <div class='row'> -->
+	  <div class='inner_container col-md-6 col-md-offset-3'>
+	  	<div class='posts_outer'>
+		  	<div class='posts_inner'>
+
+
+							<h3><%= post.user.username %></h3>
+
+							<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
+
+							<span class="glyphicon glyphicon-heart"></span><% post.likes.each do |like| %>
+									<% if post.likes.count <= 1 %> 	
+										<%= like.user.username %> 
+									<% else %> 	
+										, <%= like.user.username %> 
+									<% end %> 	
+							<% end %><br />
+
+
+							<%= link_to 'Like', like_path(post), :method => :post %>
+							<%= link_to 'Unlike', dislike_path(post), :method => :post %>
+
+							<div class='comments'>
+								<% post.comments.each do |comment| %>
+									<div class='individual_comments'>git add
+										<%= comment.user.username %> commented: 
+										<%= comment.comment %><br />
+									</div>	
+								<% end %><br />
+							</div>
+
+							<div class='comment_form'>
+								<%= form_for [post,@comment] do |f| %>x§
+								
+								<%= f.text_area :comment, placeholder: 'Comments...', class: 'text_area' %>
+								<%= f.submit 'Create comment', class: "btn btn-primary" %>
+								<% end %>		
+							</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- </div> -->
+</div>	

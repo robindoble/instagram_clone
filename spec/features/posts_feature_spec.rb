@@ -30,7 +30,7 @@ describe 'Post FEATURES' do
 				visit '/posts'
 				click_link 'Create Post' 
 				expect(current_path).to eq('/posts/new')
-				fill_in 'Caption',with: 'This is an amazing photo'
+				fill_in 'Comment',with: 'This is an amazing photo'
 				click_button 'Create Post'
 				# save_and_open_page
 				expect(page).to have_content('This is an amazing photo')
@@ -41,7 +41,7 @@ describe 'Post FEATURES' do
 		context 'posts show the username' do 
 
 			before do
-				post = Post.new(:caption => 'This is a post test'	)
+				post = Post.new
 				post.user = @user
 				post.save
 			end
@@ -49,7 +49,7 @@ describe 'Post FEATURES' do
 			it 'of the post' do  
 				visit '/posts'
 				expect(current_path).to eq('/posts')
-				expect(page).to have_content('This is a post test')
+				
 				expect(page).to have_content('robindoble')
 			end
 
@@ -60,7 +60,7 @@ describe 'Post FEATURES' do
 
 			it 'and the picture should be displayed' do 
 				visit '/posts/new'
-				fill_in 'Caption',with: 'This is an amazing photo'
+				fill_in 'Comment',with: 'This is an amazing photo'
 				attach_file 'Picture', Rails.root.join('spec/images/image.jpeg')
 				click_button 'Create Post'
 				# expect(current_path).to eq new_posts_path
@@ -79,7 +79,7 @@ describe 'POST Features adding likes to pictures' do
 	before do 
 		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
 		@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-		@user1.posts.create(:caption => 'This is a post test')
+		@user1.posts.create
 	end
 
 	it 'users can like photos and the likes should be shown' do 

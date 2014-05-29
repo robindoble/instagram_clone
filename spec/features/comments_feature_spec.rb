@@ -5,7 +5,7 @@ describe 'comments FEATURE' do
 
 	before do 
 		@user = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-		@user.posts.create(:caption => 'This is a post test')
+		@user.posts.create
 	end
 
 	it 'users can leave a comment on a post' do 

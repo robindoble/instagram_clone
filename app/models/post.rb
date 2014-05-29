@@ -18,10 +18,10 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
 
-  def output_comment_with_tag_links
-  	string = self.caption
+  attr_reader :comment
+  
+  def comment=(comment_text)
+  	self.comments.create(comment: comment_text, user: self.user)
   end
-
-
 
 end

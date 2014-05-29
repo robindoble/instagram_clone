@@ -5,7 +5,7 @@ describe 'User MODEL' do
 	before do 
 		@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
 		@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-		@post = @user.posts.create(:caption => 'This is a post test')
+		@post = @user.posts.create
 	end
 
 	it 'deleting a user deletes all their posts' do 
