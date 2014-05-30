@@ -4,17 +4,26 @@ describe 'comments FEATURE' do
 
 
 	before do 
-		@user = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-		@user.posts.create
+		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+		@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
+		@user1.posts.create
 	end
 
 	it 'users can leave a comment on a post' do 
-		login_as @user
+		login_as @user2
 		visit '/posts'
 		fill_in 'Comments...', with: 'Hank, your picture is amazing'
 		click_on 'Create comment'
 		expect(page).to have_content 'Hank, your picture is amazing'
+		expect(page).to have_content @user2.username
 	end
 
+	it 'blank comment submissions are not saved' do 
+		login_as @user2
+		visit '/posts'
+		fill_in 'Comments...', with: ''
+		click_on 'Create comment'
+		expect(page).not_to have_content @user2.username
+	end
 
 end
