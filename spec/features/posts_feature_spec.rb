@@ -16,6 +16,7 @@ describe 'Post FEATURES' do
 
 		before do 
 			@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+			@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
 			login_as @user
 		end
 
@@ -82,6 +83,20 @@ describe 'Post FEATURES' do
 				expect(page).not_to have_content 'This is an amazing photo'
 
 			end
+
+				it 'users can delete their own posts' do 
+				visit '/posts/new'
+				fill_in 'Comment',with: 'This is an amazing photo'
+				click_button 'Create Post'
+				expect(page).to have_content 'This is an amazing photo'
+				logout
+				login_as @user2
+				visit '/posts'
+				click_link 'Delete Post'
+				expect(page).to have_content 'This is an amazing photo'
+			end
+
+
 
 		end
 
