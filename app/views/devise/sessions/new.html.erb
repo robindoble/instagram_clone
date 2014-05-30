@@ -9,7 +9,50 @@
       <h1>Welcome to instafun, please sign in!</h1>
       <p>Your first and only stop for sharing all your favourite photos.</p>
       <!-- <a class="btn btn-primary btn-lg" role="button">Sign up &raquo;</a> -->
-      <p><%= link_to "Sign up".html_safe, new_user_registration_path, class: "btn btn-primary btn-lg", role: "button" %><br /></p>
+      <p><%= link_to "Sign up", '#', class: "btn btn-primary btn-lg", data: {toggle: "modal", target: ".myModal"} %><br /></p>
     </div>
   </div>
 </div>
+
+
+
+<% if user_signed_in? == false %>
+
+	<div class="modal fade myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">Please register</h4>
+				      </div>
+					      
+					      <div class="modal-body">     	
+
+													<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+													<%= devise_error_messages! %>
+
+													<div><%= f.label :username %><br />
+													<%= f.text_field :username, autofocus: true, required: true, class: 'form-control' %></div>
+
+													<div><%= f.label :email %><br />
+													<%= f.email_field :email, autofocus: true, class: 'form-control' %></div>
+
+													<div><%= f.label :password %><br />
+													 <%= f.password_field :password, autocomplete: "off", class: 'form-control' %></div>
+
+													<div><%= f.label :password_confirmation %><br />
+													<%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %></div>
+					      </div>
+
+				      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        <%= f.submit "Sign up", class: "btn btn-primary" %>
+								        <% end %>
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>
+
+<% end %>

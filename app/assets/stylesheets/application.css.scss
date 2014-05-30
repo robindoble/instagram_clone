@@ -26,12 +26,14 @@ body {
 
 .jumbotron {
 	background-image: image-url('image.jpg');
-	height: 350px;
+	height: 500px;
 	width: auto;
 
 	.outer_container{
+		height: 250px;
 		margin: 20px 80px;
-		background-color: rgba(255,255,255,.85)		
+		background-color: rgba(255,255,255,.85);
+		border-radius: 5px;
 	}
 	
 }
@@ -39,4 +41,8 @@ body {
 
 .navbar-header {
 	display: inline;
+}
+
+.new_user label {
+	margin-top: 5px;
 }
