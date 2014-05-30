@@ -1,11 +1,36 @@
-<%= form_for @post, html: {multipart: true} do |f| %>
-
-<%= f.label :comment %>
-<%= f.text_area :comment %>
-
-<%= f.label :picture %>
-<%= f.file_field :picture %>
 
 
-<%= f.submit %>
-<% end %>
+
+
+
+
+	<div class="modal fade myNewPost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">Please register</h4>
+				      </div>
+					      
+					      <div class="modal-body">     	
+
+									<%= form_for @post, html: {multipart: true} do |f| %>
+
+									<%= f.label :comment %>
+									<%= f.text_area :comment %>
+
+									<%= f.label :picture %>
+									<%= f.file_field :picture %>
+					      
+					      </div>
+
+				      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        <%= f.submit "Sign up", class: "btn btn-primary" %>
+								        <% end %>
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>

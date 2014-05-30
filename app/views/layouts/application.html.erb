@@ -37,7 +37,8 @@
 
 						    <div class="navbar-collapse collapse">
 							    <div class='navbar-form navbar-right'>
-							    	<%= link_to 'Create Post', new_post_path, class: "btn btn-success" %>
+							    	
+							    	<%= link_to "Create Post", '#', class: "btn btn-success", data: {toggle: "modal", target: ".myNewPost"} %>
 									  <%= link_to 'Edit registration', edit_user_registration_path, class: "btn btn-primary" %>
 								    <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: "btn btn-danger" %>        
 						    	</div>
@@ -50,13 +51,42 @@
 		<br />
 
 
-<p><%= notice %></p>
-<p><%= alert %></p>
+<p><%#= notice %></p>
+<p><%#= alert %></p>
 
 
 <%= yield %>
 
+	<div class="modal fade myNewPost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		        <h4 class="modal-title" id="myModalLabel">Post it!</h4>
+				      </div>
+					      
+					      <div class="modal-body">     	
 
+									<%= form_for Post.new, html: {multipart: true} do |f| %>
+
+									<%= f.label :comment %>
+									<%= f.text_area :comment %>
+
+									<%= f.label :picture %>
+									<%= f.file_field :picture %>
+					      
+					      </div>
+
+				      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        <%= f.submit "Sign up", class: "btn btn-primary" %>
+								        <% end %>
+	      </div>
+	    
+	    </div>
+	  </div>
+	</div>
 
 
 </body>
