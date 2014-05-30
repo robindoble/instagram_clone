@@ -95,12 +95,7 @@ describe 'Post FEATURES' do
 				click_link 'Delete Post'
 				expect(page).to have_content 'This is an amazing photo'
 			end
-
-
-
 		end
-
-
 
 	end
 end
