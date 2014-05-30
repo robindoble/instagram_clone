@@ -70,6 +70,23 @@ describe 'Post FEATURES' do
 
 		end
 
+		context 'deleting posts' do 
+
+			it 'users can delete their own posts' do 
+				visit '/posts/new'
+				fill_in 'Comment',with: 'This is an amazing photo'
+				attach_file 'Picture', Rails.root.join('spec/images/image.jpeg')
+				click_button 'Create Post'
+				expect(page).to have_content 'This is an amazing photo'
+				click_link 'Delete Post'
+				expect(page).not_to have_content 'This is an amazing photo'
+
+			end
+
+		end
+
+
+
 	end
 end
 
@@ -107,23 +124,6 @@ describe 'POST Features adding likes to pictures' do
 
 end
 
-
-# describe 'POST adding comments with hastags' do 
-
-# 	before do 
-# 		@user = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-# 		@user.posts.create
-# 		login_as @user
-# 	end
-
-# 	it 'comments on posts also create hashtags' do 
-# 		visit '/posts'
-# 		fill_in 'Comment',with: 'This is an amazing #photo'
-# 		click_button 'Create Post'
-# 		expect(page).to have_content '#photo'
-# 	end
-
-# end
 
 
 

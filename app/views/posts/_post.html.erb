@@ -30,9 +30,9 @@
 								<% end %><br />
 							</div>
 
+							<%= link_to 'Delete Post', post_path(post), :method => :delete %>
 							<div class='comment_form'>
 								<%= form_for [post,@comment] do |f| %>
-								
 								<%= f.text_area :comment, placeholder: 'Comments...', class: 'text_area' %>
 								<%= f.submit 'Create comment', class: "btn btn-primary" %>
 								<% end %>		
