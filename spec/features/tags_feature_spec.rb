@@ -12,7 +12,8 @@ describe 'tags FEATURES' do
 	it 'should show tags in captions or comments as tag links' do 
 		login_as @user
 		visit '/posts/new'
-		fill_in 'Comment',with: 'Hank Moody is number one, #one'
+		fill_in 'Comment',with: 'Hank Moody is number #one'
+		click_button 'Create Post'
 		expect(page).to have_link '#one'
 	end
 

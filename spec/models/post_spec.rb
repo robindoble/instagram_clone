@@ -14,6 +14,19 @@ describe 'Post MODEL' do
   end
 
 
+	# it 'comments on posts also create hashtags' do 
+	# 	@user.posts.create(comment: 'This is a #hashtag test')
+	# 	# expect(Comment.count).to eq(1)
+	# 	expect(Tag.count).to eq(1)
+	# 	# expect(Comment.count).to eq(1)
+
+	# end
+
 end
+
+
+
+
+
 
 

@@ -22,16 +22,16 @@
 							<%= link_to 'Unlike', dislike_path(post), :method => :post %>
 
 							<div class='comments'>
-								<% post.comments.each do |comment| %>
+								<% post.comments.each do |elem| %>
 									<div class='individual_comments'>git add
-										<%= comment.user.username %> commented: 
-										<%= comment.comment %><br />
+										<%# comment.user.username %> commented: 
+										<%= linkify_tags(elem.comment) if elem.comment %><br />
 									</div>	
 								<% end %><br />
 							</div>
 
 							<div class='comment_form'>
-								<%= form_for [post,@comment] do |f| %>x§
+								<%= form_for [post,@comment] do |f| %>
 								
 								<%= f.text_area :comment, placeholder: 'Comments...', class: 'text_area' %>
 								<%= f.submit 'Create comment', class: "btn btn-primary" %>

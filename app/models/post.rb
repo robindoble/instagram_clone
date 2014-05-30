@@ -16,12 +16,17 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_and_belongs_to_many :tags
 
-
-  attr_reader :comment
+  # attr_reader :comment
   
-  def comment=(comment_text)
-  	self.comments.create(comment: comment_text, user: self.user)
+  def comment
+  	''
+  end
+  
+  def create_comment(text)
+  	new_comment = self.comments.create(comment: text, user: self.user)
+  	new_comment.create_hashtags
   end
 
 end

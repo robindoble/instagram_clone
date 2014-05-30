@@ -16,7 +16,9 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.save
 
-    @post.comment = params[:post][:comment]
+    unless params[:post][:comment].blank?
+      @post.create_comment(params[:post][:comment])
+    end
 
     redirect_to('/posts')
   end
