@@ -10,7 +10,7 @@ def create
 			@new_comment.create_hashtags
 		end
 	# redirect_to '/posts'
-	# render  :json
+	# render  json: @new_comment
 	render 'create', content_type: :json
 end
 

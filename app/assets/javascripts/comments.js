@@ -3,19 +3,19 @@
 $(document).ready(function(){
 
 	$('.new_comment').on('submit', function(event){
-		event.preventDefault();
-		// console.log($(this).serialize());
-
-		 // var commentList = $(this).siblings('ul');
+		event.preventDefault();	
 		 var commentList = $('.comments'); 
-		 // commentList.css ('background','yellow')
-		 // var template = $(this).siblings('#new_comment_template').html();
-
+		 
+		 console.log(this)
 
 		$.post($(this).attr('action'), $(this).serialize(), function(response){
-			
+		
+			console.log(this)	
+			var targetID = response.post_id;
+			var postID = $('.post-parent-container[data-id=' + targetID + ']');
 			var rendered = Mustache.render($('#new_comment_template').html(), response);
-			commentList.append(rendered);
+			
+			postID.find('ul').append(rendered);
 			
 			});
 		});
