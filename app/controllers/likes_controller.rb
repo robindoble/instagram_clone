@@ -1,11 +1,12 @@
 class LikesController < ApplicationController
 
 def create
+	# raise 'hello'
 	@post = Post.find(params[:post_id])
-	like = @post.likes.new
-	like.user = current_user
-	like.save
-	redirect_to '/posts'
+	@like = @post.likes.new
+	@like.user = current_user
+	@like.save
+	render json: @like
 end
 
 def destroy

@@ -6,11 +6,11 @@ $(document).ready(function(){
 		event.preventDefault();	
 		 var commentList = $('.comments'); 
 		 
-		 console.log(this)
+		 // console.log(this)
 
 		$.post($(this).attr('action'), $(this).serialize(), function(response){
 		
-			console.log(this)	
+			// console.log(this)	
 			var targetID = response.post_id;
 			var postID = $('.post-parent-container[data-id=' + targetID + ']');
 			var rendered = Mustache.render($('#new_comment_template').html(), response);
@@ -20,3 +20,6 @@ $(document).ready(function(){
 			});
 		});
 	});
+
+
+
