@@ -6,7 +6,7 @@ def create
 	@like = @post.likes.new
 	@like.user = current_user
 	@like.save
-	render json: @like
+	render 'create', content_type: :json
 end
 
 def destroy

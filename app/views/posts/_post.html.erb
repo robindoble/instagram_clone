@@ -9,13 +9,17 @@
 							
 							<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
 
-							<span class="glyphicon glyphicon-heart"></span><% post.likes.each do |like| %>
-									<% if post.likes.count <= 1 %> 	
-										<%= like.user.username %> 
-									<% else %> 	
-										, <%= like.user.username %> 
-									<% end %> 	
-							<% end %><br />
+								<ul class='like-list' >
+									<% post.likes.each do |like| %>
+													<li>
+														<% if post.likes.count <= 1 %> 	
+															<%= like.user.username %> 
+														<% else %> 	
+															, <%= like.user.username %> 
+														<% end %> 	
+												</li>		
+									<% end %><br />
+							</ul>
 
 
 							<%= link_to 'Like', like_path(post), :method => :post, class: 'like' %>
