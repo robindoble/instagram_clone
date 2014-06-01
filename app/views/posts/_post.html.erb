@@ -22,15 +22,14 @@
 							<%= link_to 'Unlike', dislike_path(post), :method => :post %>
 							<%= link_to 'Delete Post', post_path(post), :method => :delete %>
 
-							<div class='comments'>
-								<% post.comments.each do |elem| %>
-									<div class='individual_comments'>
-										<%= elem.user.username %> commented: 
-										<%= linkify_tags(elem.comment) %><br />
-									</div>	
-								<% end %><br />
-							</div>
-
+							
+							<ul class='comments'>
+								<% post.comments.each do |elem| %>						
+										<li><%= elem.user.username %> commented: 
+										<%= linkify_tags(elem.comment) %></li>									
+								<% end %>
+							</ul>
+							
 							<div class='comment_form'>
 								<%= form_for [post,@comment] do |f| %>
 								<%= f.text_area :comment, placeholder: 'Comments...', class: 'text_area' %>

@@ -1,7 +1,13 @@
 
-	<% if @posts.any? %>
-		<%= render @posts %>
-	<% else %>
-		<h3> No posts yet</h3>
-	<% end %>
+<% if @posts.any? %>
+	<%= render @posts %>
+<% else %>
+	<h3> No posts yet</h3>
+<% end %>
 <br />
+
+
+<template id="new_comment_template">
+	<li> commented: {{ comment }} </li>	
+	<!-- commented: {{ comment }} -->
+</template>
