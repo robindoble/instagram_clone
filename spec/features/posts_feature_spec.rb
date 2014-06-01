@@ -6,14 +6,14 @@ describe 'Post FEATURES' do
 
 		it 'should always prompt users to login' do
 			visit '/posts'
-			expect(page).to have_content('You need to sign in or sign up')
+			expect(page).to have_content('please sign in')
 			expect(page).not_to have_content('Create Post')
 		end
 
 	end
 
 	context 'when logged in' do 
-
+\
 		before do 
 			@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
 			@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')

@@ -9,6 +9,8 @@ describe 'comments FEATURE' do
 		@user1.posts.create
 	end
 
+	#running tests for js both these should feel
+
 	it 'users can leave a comment on a post' do 
 		login_as @user2
 		visit '/posts'

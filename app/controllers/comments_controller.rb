@@ -9,7 +9,8 @@ def create
 			new_comment.save
 			new_comment.create_hashtags
 		end
-	redirect_to '/posts'
+	# redirect_to '/posts'
+	render json: new_comment
 end
 
 

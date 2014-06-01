@@ -68,7 +68,7 @@
 					      
 					      <div class="modal-body">     	
 
-									<%= form_for Post.new, html: {multipart: true} do |f| %>
+									<%= form_for Post.new, url: posts_path(:post), html: {multipart: true} do |f| %>
 
 									<%= f.label :comment %>
 									<%= f.text_area :comment %>
@@ -80,7 +80,7 @@
 
 				      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <%= f.submit "Sign up", class: "btn btn-primary" %>
+								        <%= f.submit "Create", class: "btn btn-primary" %>
 								        <% end %>
 	      </div>
 	    
