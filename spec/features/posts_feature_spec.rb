@@ -13,7 +13,7 @@ describe 'Post FEATURES' do
 	end
 
 	context 'when logged in' do 
-\
+
 		before do 
 			@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
 			@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')

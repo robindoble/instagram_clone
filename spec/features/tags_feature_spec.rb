@@ -28,7 +28,7 @@ describe 'tags FEATURES' do
 		click_link 'Create Post'
 		fill_in 'Add a comment...',with: 'Hank Moody is number #one'
 		click_on 'Create'
-		save_and_open_page
+		# save_and_open_page
 		expect(page).to have_content 'hankmoody'
 		expect(page).to have_link '#one'
 		expect(page).to have_link '#two'

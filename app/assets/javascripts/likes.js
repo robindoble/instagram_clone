@@ -11,7 +11,7 @@ $(document).ready(function(){
 			var postID = $('.post-parent-container[data-id=' + targetID + ']');
 			
 			var rendered = Mustache.render($('#new_like').html(),response);
-			console.log(rendered)
+			console.log(postID)
 			postID.find('ul[class="like-list"]').prepend(rendered);
 
 		});
