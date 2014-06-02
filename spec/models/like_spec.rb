@@ -23,6 +23,7 @@ describe 'Like MODEL' do
 	  	like = @post1.likes.new
 	  	like.user = @user
 	  	expect(like.save).to eq(true)
+	  	expect(like.user).to eq(@user)
 	  	like = @post2.likes.new
 	  	like.user = @user
 	  	expect(like.save).to eq(true)

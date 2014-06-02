@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
   def new
     redirect_to '/posts'
-  	# @post=Post.new
   end
 
   def create

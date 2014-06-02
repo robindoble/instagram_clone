@@ -7,19 +7,18 @@ def create
 	@like.user = current_user
 	@post.likes.find_by(user: current_user)
 	@like.save
-	# @action = 'create'
 	render 'create', content_type: :json
 end
 
 def destroy
 	@like = Post.find(params[:post_id]).likes.where(:user => current_user)
-	puts 'start'
-	puts @like
+	# puts 'start'
+	# puts @like
 	@like.first.destroy if @like.any?
-	puts @like
-	puts 'end'
+	# puts @like
+	# puts 'end'
 	redirect_to '/posts'
-	puts @like
+	# puts @like
 end
 
 end

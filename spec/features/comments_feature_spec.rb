@@ -13,6 +13,7 @@ describe 'comments FEATURE' do
 	it 'users can leave a comment on a post', js: true do 
 		login_as @user2
 		visit '/posts'
+		save_and_open_page
 		fill_in 'Comments...', with: 'Hank, your picture is amazing'
 		click_on 'Create comment'
 		expect(page).to have_content 'Hank, your picture is amazing'

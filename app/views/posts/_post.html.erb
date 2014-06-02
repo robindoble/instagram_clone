@@ -15,7 +15,7 @@
 									<% post.likes.each do |like| %>
 													<li>
 														<% if post.likes.count <= 1 %> 	
-															<%= like.user.username %> 
+															<%= like.user.username %> likes
 														<% else %> 	
 															, <%= like.user.username %> 
 														<% end %> 	

@@ -11,12 +11,12 @@ describe 'tags FEATURES' do
 		fill_in 'Add a comment...',with: 'Hank Moody is number #one'
 		click_on 'Create'
 		
-		# visit '/posts'
+		visit '/posts'
 		click_link 'Create Post'
 		fill_in 'Add a comment...',with: 'Hank Moody is number #two also'
 		click_on 'Create'
 
-		# visit '/posts'
+		visit '/posts'
 		click_link 'Create Post'
 		fill_in 'Add a comment...',with: 'Hank Moody is number #one really'
 		click_on 'Create'
