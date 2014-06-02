@@ -27,13 +27,12 @@ describe 'Post FEATURES' do
 				expect(page).to have_content('No posts yet')
 			end
 
-			it 'users can add posts' do  
+			it 'users can add posts', js: true do  
 				visit '/posts'
 				click_link 'Create Post' 
-				expect(current_path).to eq('/posts/new')
-				fill_in 'Comment',with: 'This is an amazing photo'
-				click_button 'Create Post'
-				# save_and_open_page
+				expect(current_path).to eq('/posts')
+				fill_in 'Add a comment...',with: 'This is an amazing photo'
+				click_button 'Create'
 				expect(page).to have_content('This is an amazing photo')
 			end
 	
@@ -57,27 +56,31 @@ describe 'Post FEATURES' do
 		end
 
 
-		context 'adding pictures to each post' do 
+		context 'adding pictures to each post', js: true do 
 
 			it 'and the picture should be displayed' do 
 				visit '/posts/new'
-				fill_in 'Comment',with: 'This is an amazing photo'
+				click_link 'Create Post'
+				fill_in 'Add a comment...', with: 'This is an amazing photo'
 				attach_file 'Picture', Rails.root.join('spec/images/image.jpeg')
-				click_button 'Create Post'
+				click_button 'Create'
 				# expect(current_path).to eq new_posts_path
-				expect(page).to have_content 'This is an amazing photo'
+
+				# puts page.html
+				expect(page).to have_content 'robindoble'
 				expect(page).to have_css 'img.uploaded_pic'
 			end
 
 		end
 
-		context 'deleting posts' do 
+		context 'deleting posts', js: true do 
 
 			it 'users can delete their own posts' do 
 				visit '/posts/new'
-				fill_in 'Comment',with: 'This is an amazing photo'
+				click_link 'Create Post'
+				fill_in 'Add a comment...',with: 'This is an amazing photo'
 				attach_file 'Picture', Rails.root.join('spec/images/image.jpeg')
-				click_button 'Create Post'
+				click_button 'Create'
 				expect(page).to have_content 'This is an amazing photo'
 				click_link 'Delete Post'
 				expect(page).not_to have_content 'This is an amazing photo'
@@ -86,8 +89,9 @@ describe 'Post FEATURES' do
 
 				it 'users can delete their own posts' do 
 				visit '/posts/new'
-				fill_in 'Comment',with: 'This is an amazing photo'
-				click_button 'Create Post'
+				click_link 'Create Post'
+				fill_in 'Add a comment...',with: 'This is an amazing photo'
+				click_button 'Create'
 				expect(page).to have_content 'This is an amazing photo'
 				logout
 				login_as @user2
@@ -101,38 +105,9 @@ describe 'Post FEATURES' do
 end
 
 
-describe 'POST Features adding likes to pictures' do 
-
-	before do 
-		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
-		@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-		@user1.posts.create
-	end
-
-	it 'users can like photos and the likes should be shown' do 
-		login_as @user1
-		visit '/posts'
-		click_on 'Like'
-		logout
-		login_as @user2
-		visit '/posts'
-		click_on 'Like'
-		expect(page).to have_content 'robindoble'
-		expect(page).to have_content 'hankmoody'
-	end
 
 
-	it 'users can unlike posts as well' do 
-		login_as @user2
-		visit '/posts'
-		click_on 'Like'
-		expect(page).to have_content 'hankmoody'
-		click_on 'Unlike'
-		expect(page).not_to have_content 'hankmoody'
-	end
 
-
-end
 
 
 

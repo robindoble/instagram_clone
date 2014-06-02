@@ -10,13 +10,11 @@ $(document).ready(function(){
 
 		$.post($(this).attr('action'), $(this).serialize(), function(response){
 		
-			// console.log(this)	
 			var targetID = response.post_id;
 			var postID = $('.post-parent-container[data-id=' + targetID + ']');
 			var rendered = Mustache.render($('#new_comment_template').html(), response);
-			
-			postID.find('ul').append(rendered);
-			
+			postID.find('ul[class="comment-list"]').append(rendered);
+
 			});
 		});
 	});

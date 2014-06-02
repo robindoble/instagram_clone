@@ -70,7 +70,7 @@
 
 									<%= form_for Post.new, url: posts_path(:post), html: {multipart: true} do |f| %>
 
-									<%= f.label :comment %>
+									<%= f.label :comment, 'Add a comment...' %>
 									<%= f.text_area :comment %>
 
 									<%= f.label :picture %>

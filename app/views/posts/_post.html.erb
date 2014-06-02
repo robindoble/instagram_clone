@@ -7,7 +7,9 @@
 
 							<h3><%= post.user.username %></h3>
 							
-							<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
+							<% if post.picture.exists? %>
+								<%= image_tag post.picture.url(:medium), class:'uploaded_pic' %><br />
+							<% end %>
 
 								<ul class='like-list' >
 									<% post.likes.each do |like| %>
@@ -21,13 +23,12 @@
 									<% end %><br />
 							</ul>
 
-
-							<%= link_to 'Like', like_path(post), :method => :post, class: 'like' %>
-							<%= link_to 'Unlike', dislike_path(post), :method => :post %>
-							<%= link_to 'Delete Post', post_path(post), :method => :delete %>
-
+								
+								<%= link_to 'Like', like_path(post), :method => :post, class: 'like' %>
+								<%= link_to 'Unlike', dislike_path(post), :method => :post %>								
+								<%= link_to 'Delete Post', post_path(post), :method => :delete %>
 							
-							<ul class='comments'>
+							<ul class='comment-list'>
 								<% post.comments.each do |elem| %>						
 										<li><%= elem.user.username %> commented: 
 										<%= linkify_tags(elem.comment) %></li>									

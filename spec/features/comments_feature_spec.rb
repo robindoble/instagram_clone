@@ -6,12 +6,11 @@ describe 'comments FEATURE' do
 	before do 
 		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
 		@user2 = User.create(:username => 'hankmoody', :email => 'hank@california.com',:password => 'password',:password_confirmation => 'password')
-		@user1.posts.create
+		@user1.posts.create(picture: Rails.root.join('spec/images/image.jpeg').open)
 	end
 
-	#running tests for js both these should feel
 
-	it 'users can leave a comment on a post' do 
+	it 'users can leave a comment on a post', js: true do 
 		login_as @user2
 		visit '/posts'
 		fill_in 'Comments...', with: 'Hank, your picture is amazing'
@@ -20,7 +19,7 @@ describe 'comments FEATURE' do
 		expect(page).to have_content @user2.username
 	end
 
-	it 'blank comment submissions are not saved' do 
+	it 'blank comment submissions are not saved', js: true do 
 		login_as @user2
 		visit '/posts'
 		fill_in 'Comments...', with: ''

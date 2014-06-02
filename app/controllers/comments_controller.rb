@@ -8,10 +8,12 @@ def create
 			@new_comment.user = current_user
 			@new_comment.save
 			@new_comment.create_hashtags
+			render 'create', content_type: :json
+		else
+			render nothing: true
 		end
 	# redirect_to '/posts'
 	# render  json: @new_comment
-	render 'create', content_type: :json
 end
 
 
