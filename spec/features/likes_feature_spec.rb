@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'POST Features adding likes to pictures' do 
+describe 'LIKE Features adding likes to pictures' do 
 
 	before do 
 		@user1 = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
@@ -9,14 +9,13 @@ describe 'POST Features adding likes to pictures' do
 	end
 
 	it 'users can like photos and the likes should be shown', js: true do 
-		login_as @user2
+		login_as @user1
 		visit '/posts'
 		click_on 'Like'
 		logout
-		login_as @user1
+		login_as @user2
 		visit '/posts'
-		click_link 'Like'
-		save_and_open_page
+		click_on 'Like'
 		expect(page).to have_content 'hankmoody likes'
 		expect(page).to have_content 'robindoble likes'
 	end
