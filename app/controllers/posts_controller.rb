@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
-  before_action :authenticate_user!
+  before_action :authenticate_admin_or_user!
+  # before_action 
 
   def index
   	@posts = Post.all
@@ -28,6 +29,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy if ( @post.user.id == current_user.id )
     redirect_to '/posts'
+  end
+
+  private
+
+  def authenticate_admin_or_user!
+    return true if admin_signed_in?
+    authenticate_user!
   end
 
 

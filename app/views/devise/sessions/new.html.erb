@@ -9,14 +9,22 @@
       <h1>Welcome to instafun, please sign in!</h1>
       <p>Your first and only stop for sharing all your favourite photos.</p>
       <!-- <a class="btn btn-primary btn-lg" role="button">Sign up &raquo;</a> -->
-      <p><%= link_to "Sign up", '#', class: "btn btn-primary btn-lg", data: {toggle: "modal", target: ".myModal"} %><br /></p>
+      <% if resource_name != :admin %>
+	      <p><%= link_to "Sign up", '#', class: "btn btn-primary btn-lg", data: {toggle: "modal", target: ".myModal"} %><br /></p>
+	    <% else %>
+	    	<%= form_for(Admin.new, as: :admin, url: session_path(:admin)) do |f| %>
+			    <%= f.email_field :email, placeholder: 'Email', autofocus: true %>
+			    <%= f.password_field :password, placeholder: 'Password', autocomplete: "off" %>
+				  <%= f.submit "Sign in", class: "btn btn-success" %>
+		    <% end %>
+	    <% end %>
     </div>
   </div>
 </div>
 
 
 
-<% if user_signed_in? == false %>
+<% if user_signed_in? == false && resource_name != :admin %>
 
 	<div class="modal fade myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
