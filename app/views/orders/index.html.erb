@@ -2,8 +2,9 @@
 <% if @orders.any? %>
 
 	<% @orders.each do |order| %>
-	<%= link_to order.post.id, '/posts' %>
 	<%= order.user.username %>
+	<%= order.number %>
+	<%= link_to order.post.id, '/posts' %>
 	<% end %>
 
 <% else %>
