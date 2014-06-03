@@ -5,9 +5,12 @@ def create
 	@post = Post.find(params[:post_id])
 	@like = @post.likes.new
 	@like.user = current_user
-	@post.likes.find_by(user: current_user)
 	@like.save
-	render 'create', content_type: :json
+
+	WebsocketRails[:likes].trigger('new', { id: @post.id, new_like: @like.user })
+
+	redirect_to '/posts'
+	# render 'create', content_type: :json
 end
 
 def destroy
