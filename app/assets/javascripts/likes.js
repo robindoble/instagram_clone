@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
 		$('.like').on('click', function(event){
-			console.log(this);
+			// console.log(this);
 			event.preventDefault();
 			$.post(this.href);
 
@@ -21,9 +21,11 @@ $(document).ready(function(){
 		var connection = new WebSocketRails('localhost:3000/websocket');
 		channel = connection.subscribe('likes');
 		channel.bind('new',function(like){
+			console.log(like)
 			// $('.like_list').append('<li> resp.new_like_count </li>');		
 			var postID = $('.post-parent-container[data-id=' + like.id + ']');
-			postID.find('ul[class="like-list"]').prepend('<li>'+ like.user +'</li>');
+			postID.find('ul[class="like-list"]').append('<li>' + like.new_like_user + ' likes' + ' </li>' );
+			// append('<li>'+ like.user +'</li>');
 			// console.log('a new like registered');
 		});
 		

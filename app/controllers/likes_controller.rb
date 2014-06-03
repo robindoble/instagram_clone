@@ -7,7 +7,7 @@ def create
 	@like.user = current_user
 	@like.save
 
-	WebsocketRails[:likes].trigger('new', { id: @post.id, new_like: @like.user })
+	WebsocketRails[:likes].trigger 'new', { id: @post.id, new_like_user: @like.user.username }
 
 	redirect_to '/posts'
 	# render 'create', content_type: :json

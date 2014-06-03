@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show]
   resources :tags, only: [:show]
 
-  resources :orders, only: [:inrailsdex]
+  resources :orders, only: [:index]
 
   post 'posts/:post_id/like', to: 'likes#create' , as: 'like'
   post 'posts/:post_id/unlike', to: 'likes#destroy', as: 'dislike'
