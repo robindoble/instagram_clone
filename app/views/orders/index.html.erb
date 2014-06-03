@@ -1,1 +1,11 @@
-No orders yet
+
+<% if @orders.any? %>
+
+	<% @orders.each do |order| %>
+	<%= link_to order.post.id, '/posts' %>
+	<%= order.user.username %>
+	<% end %>
+
+<% else %>
+	No orders yet
+<% end %>
