@@ -45,12 +45,16 @@ describe 'Orders' do
 				visit '/orders'
 			end
 
-			it 'should display the product' do 
+			it 'should display the post' do 
 				expect(page).to have_link @post.id
 			end
 
-			it 'should display the product' do 
+			it 'should display the user' do 
 				expect(page).to have_content @user.username
+			end
+
+			it 'should display the order number' do 
+				expect(page).to have_content '2512130001'
 			end
 
 

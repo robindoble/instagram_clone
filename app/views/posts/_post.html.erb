@@ -27,7 +27,8 @@
 								<%= link_to 'Like', like_path(post), class: 'like' %>
 								<%= link_to 'Unlike', dislike_path(post), :method => :post %>								
 								<%= link_to 'Delete Post', post_path(post), :method => :delete %>
-							
+								<%= link_to 'Buy photo', new_post_charge_path(post), class: "btn btn-primary" %>
+
 							<ul class='comment-list'>
 								<% post.comments.each do |elem| %>						
 										<li><%= elem.user.username %> commented: 
@@ -41,6 +42,8 @@
 								<%= f.submit 'Create comment', class: "btn btn-primary" %>
 								<% end %>		
 							</div>
+
+
 
 			</div>
 		</div>

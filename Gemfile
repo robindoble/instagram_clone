@@ -6,6 +6,7 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'thin'
 gem 'websocket-rails'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
