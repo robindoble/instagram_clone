@@ -52,6 +52,13 @@ gem 'capybara'
 gem 'database_cleaner'
 gem 'launchy'
 gem 'poltergeist'
+gem 'better_errors'
+end
+
+group :production do 
+	gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+	gem 'rails_12factor'
+
 end
 
 
