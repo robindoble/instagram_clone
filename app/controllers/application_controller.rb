@@ -13,4 +13,13 @@ class ApplicationController < ActionController::Base
   def show
   end
 
+
+  # def authenticate_approved_user!
+  #   authenticate_user!
+  #   unless current_user.approved?
+  #     flash[:notice] = 'Waiting for approval'
+  #     redirect_to '/posts'
+  #   end
+  # end
+  
 end
