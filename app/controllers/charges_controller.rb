@@ -9,6 +9,7 @@ end
 
 def create
   # Amount in cents
+  @post = Post.find params[:post_id]
   @amount = 500
 
   customer = Stripe::Customer.create(
@@ -23,8 +24,8 @@ def create
     :currency    => 'usd'
   )
 
- 	Order.create(user: current_user, post: @post)
- 	send_confirmation_email
+ 	Order.create!(user: current_user, post: @post)
+ 	# send_confirmation_email
 
   flash[:notice] = 'Thanks for your order'
  	redirect_to '/posts'
