@@ -23,11 +23,9 @@ describe 'Orders' do
 			end
 		end
 
+
 		context 'with orders' do 
-			
-
-
-			it 'users should be directed back to signup' do 
+		it 'users should be directed back to signup' do 
 				visit '/orders'
 				expect(current_path).to eq('/admins/sign_in')
 			end
@@ -57,9 +55,23 @@ describe 'Orders' do
 				expect(page).to have_content '2512130001'
 			end
 
-
 		end
 
+		context 'email with orders' do 
 
+			before do 
+				clear_emails
+				# login_as @admin, scope: :admin
+				Order.create(post: @post, user: @user)
+				# visit '/orders'
+			end
+
+			it 'sends an email with the post id' do 
+				open_email('hank@california.com')
+				expectation = "Thanks for ordering post number #{@post.id}"
+				expect(current_email).to have_content expectation
+			end
+
+		end
 
 end 

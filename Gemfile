@@ -53,6 +53,7 @@ gem 'database_cleaner'
 gem 'launchy'
 gem 'poltergeist'
 gem 'better_errors'
+gem 'capybara-email'
 end
 
 group :production do 

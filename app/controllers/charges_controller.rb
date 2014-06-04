@@ -24,7 +24,9 @@ def create
   )
 
  	Order.create(user: current_user, post: @post)
- 	flash[:notice] = 'Thanks for your order'
+ 	send_confirmation_email
+
+  flash[:notice] = 'Thanks for your order'
  	redirect_to '/posts'
 
 	rescue Stripe::CardError => e
