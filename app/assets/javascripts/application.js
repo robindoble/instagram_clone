@@ -16,4 +16,5 @@
 //= require mustache
 //= require bootstrap
 //= require websocket_rails/main
+//= require gmaps
 //= require_tree .

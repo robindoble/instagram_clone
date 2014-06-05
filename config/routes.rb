@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts do  
     resources :comments, only: [:create, :destroy]
     resources :charges
+    resource :map
     # resources :likes, only: [:create, :destroy]
   end
 

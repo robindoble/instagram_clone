@@ -27,6 +27,11 @@
 								<%= link_to 'Like', like_path(post), class: 'like' %>
 								<%= link_to 'Unlike', dislike_path(post), :method => :post %>								
 								<%= link_to 'Delete Post', post_path(post), :method => :delete %>
+								
+								<% unless post.address.blank? %>
+								<%= link_to 'Map', post_map_path(post), class: "btn btn-primary" %>	
+								<% end %>
+								
 								<%= link_to 'Buy photo', new_post_charge_path(post), class: "btn btn-primary" %>
 
 							<ul class='comment-list'>

@@ -105,6 +105,23 @@ describe 'Post FEATURES' do
 	end
 end
 
+describe 'maps for post' do 
+
+		before do 
+			@user = User.create(:username => 'robindoble', :email => 'robindoble@gmail.com',:password => 'password',:password_confirmation => 'password')
+			@user.posts.create(:address => '47 seddlescombe rd, london')
+			login_as @user
+		end
+
+		it 'should show a map link if one exists', js: true do 
+			visit '/posts'
+			expect(page).to have_link 'Map'
+		end
+
+
+
+end
+
 
 
 
