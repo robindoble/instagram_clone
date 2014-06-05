@@ -32,6 +32,7 @@ describe 'Post FEATURES' do
 				click_link 'Create Post' 
 				expect(current_path).to eq('/posts')
 				fill_in 'Add a comment...',with: 'This is an amazing photo'
+				fill_in 'Address', with: '25 City Rd, London'
 				click_button 'Create'
 				expect(page).to have_content('This is an amazing photo')
 			end
