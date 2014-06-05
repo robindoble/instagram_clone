@@ -25,11 +25,17 @@ class PostsController < ApplicationController
   end
 
 
+  def show
+    # raise 
+    @post = Post.find(params[:id])
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy if ( @post.user.id == current_user.id )
     redirect_to '/posts'
   end
+
 
   private
 

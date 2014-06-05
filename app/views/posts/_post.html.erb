@@ -29,7 +29,7 @@
 								<%= link_to 'Delete Post', post_path(post), :method => :delete %>
 								
 								<% unless post.address.blank? %>
-								<%= link_to 'Map', post_map_path(post), class: "btn btn-primary" %>	
+									<%= link_to 'Map', post_map_path(post), class: "btn btn-primary" %>	
 								<% end %>
 								
 								<%= link_to 'Buy photo', new_post_charge_path(post), class: "btn btn-primary" %>

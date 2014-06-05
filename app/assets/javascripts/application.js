@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require mustache
 //= require bootstrap
 //= require websocket_rails/main
