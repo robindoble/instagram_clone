@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
 		var postId = $('#map').data('post-id');
-		console.log(postId);
+		// console.log(postId)
 
+		if(postId) {
 			$.get('/posts/'+ postId +'.json', function(post){
 
 				// console.log(post.address);
@@ -30,4 +31,5 @@ $(document).ready(function(){
 
 			});
 
+		};
 });

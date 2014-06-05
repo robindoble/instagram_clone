@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
 
   def show
-    # raise 
+    # raise hello
     @post = Post.find(params[:id])
   end
 
