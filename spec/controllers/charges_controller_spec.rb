@@ -1,5 +1,5 @@
-require 'spec_helper'
+# require 'spec_helper'
 
-describe ChargesController do
+# describe ChargesController do
 
-end
+# end

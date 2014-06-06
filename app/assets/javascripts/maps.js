@@ -7,7 +7,7 @@ $(document).ready(function(){
 			$.get('/posts/'+ postId +'.json', function(post){
 
 				// console.log(post.address);
-				// console.log(post);
+				console.log(post);
 
 				map = new GMaps({
 				  div: '#map',
@@ -18,6 +18,8 @@ $(document).ready(function(){
 				GMaps.geocode({
 				  address: post.address,
 				  callback: function(results, status) {
+				  	console.log(results);
+				  	// console.log(results.count);
 				    if (status == 'OK') {
 				      var latlng = results[0].geometry.location;
 				      map.setCenter(latlng.lat(), latlng.lng());

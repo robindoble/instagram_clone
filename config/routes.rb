@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :admins
+  
   devise_for :users
+  
+
+  resource :profile, only: [:show]
+  
+
   # get 'posts/index'
   root to: 'posts#index'
   
@@ -12,7 +18,6 @@ Rails.application.routes.draw do
     # resources :likes, only: [:create, :destroy]
   end
 
-  resources :profiles, only: [:show]
   resources :tags, only: [:show]
 
   resources :orders, only: [:index]
