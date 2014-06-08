@@ -4,8 +4,7 @@ class ProfilesController < ApplicationController
 
 	def show
 		# raise 'hello'
-
-		@user = Post.find(params[:post_id]).user
+		@user = User.find(params[:user_id])
 		@posts = @user.posts
 		@comment = Comment.new
 	end

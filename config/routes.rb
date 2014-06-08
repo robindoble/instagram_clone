@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   devise_for :users
   
 
-  resource :profile, only: [:show]
-  
+  # resource :profile, only: [:show]
+  get 'users/:user_id/profile', to: 'profiles#show' , as: 'profile'  
 
   # get 'posts/index'
   root to: 'posts#index'
   
+  resources :relationships, only: [:create, :destroy]
+
   resources :posts do  
     resources :comments, only: [:create, :destroy]
     resources :charges

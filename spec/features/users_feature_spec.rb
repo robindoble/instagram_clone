@@ -18,5 +18,14 @@ describe User do
 		expect(page).not_to have_content @user2.username
 	end
 
+	it 'user page should only show posts for that specific user' do 
+		login_as @user1
+		visit '/posts'
+		click_link 'robindoble'
+		expect(page).to have_button 'Follow user'
+		
+	end
+
+
 
 end
