@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	has_many :likes, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
-	# has_many :following, :through => :relationships, :source => "followed_id"
+	has_many :following, :through => :relationships, :source => "followed_id"
 
 	has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
 

@@ -20,5 +20,12 @@ describe Relationship do
   	@relationship.should respond_to(:followed)
 	end
 
+  it 'relationship follower should be user1' do 
+  	expect(@relationship.follower).to eq(@user1)
+	end
+
+ #  it 'relationship follower should be user1' do 
+ #  	@relationship.followed.to eq(@user2)
+	# end
 
 end
