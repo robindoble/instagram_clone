@@ -22,6 +22,10 @@ describe 'User MODEL' do
 	  	@user2.destroy 
 	  	expect(@post.likes.where(:user => @user2).count).to eq(0)
 	end
+
+	it 'should respond to relationships' do 
+		expect(@user).should respond_to(:relationships)
+	end
  
 
 end
